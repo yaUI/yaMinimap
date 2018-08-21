@@ -1,6 +1,7 @@
 local addon, ns = ...
-local E, M = unpack(yaCore);
+local E, M = unpack(vCore);
 local cfg = ns.cfg
+--------------
 
 Minimap:ClearAllPoints()
 Minimap:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", cfg.x, cfg.y)
@@ -24,14 +25,6 @@ end
 
 
 E:Wait(1, CheckPosition)
-
-function CreateShadow(f)
-	local BD = CreateFrame("Frame", nil, f)
-	BD:SetFrameLevel(0)
-	BD:SetPoint("TOPLEFT",-5,5)
-	BD:SetPoint("BOTTOMRIGHT",5,-5)
-	E:SkinBackdrop(BD)
-end
 
 function CreateInnerBorder(f)
 	if f.iborder then return end
@@ -71,9 +64,6 @@ MinimapBorderTop:Hide()
 MinimapZoomIn:Hide()
 MinimapZoomOut:Hide()
 
--- Hide Voice Chat Frame
-MiniMapVoiceChatFrame:Hide()
-
 -- Hide North texture at top
 MinimapNorthTag:SetTexture(nil)
 
@@ -102,7 +92,7 @@ QueueStatusMinimapButton:ClearAllPoints()
 QueueStatusMinimapButton:SetPoint("BOTTOMLEFT", 0, 0)
 QueueStatusMinimapButtonBorder:Hide()
 E:Strip(QueueStatusFrame)
-CreateShadow(QueueStatusFrame)
+E:CreateBackdrop(QueueStatusFrame)
 
 -- Mail icon
 MiniMapMailFrame:ClearAllPoints()
@@ -351,7 +341,8 @@ if cfg.showInfo then
 end
 
 frame1px(Minimap)
-CreateShadow(Minimap)
+--Backdrop
+E:CreateBackdrop(Minimap)
 
 if cfg.watchFrame then
 	WatchFrame:ClearAllPoints()	
@@ -370,7 +361,7 @@ end
 local clockFrame, clockTime = TimeManagerClockButton:GetRegions()
 clockFrame:Hide()
 if cfg.showClock then
-	clockTime:SetFont("Interface\\AddOns\\nMedia\\fonts\\PT_Sans_Narrow.ttf", 10, "OUTLINE")
+	clockTime:SetFont(M:Fetch("font", "SansNarrow"), 10, "THINOUTLINE")
 	clockTime:SetTextColor(1,1,1)
 	TimeManagerClockButton:SetPoint("BOTTOM", Minimap, "BOTTOM", 0, 1)
 	clockTime:Show()

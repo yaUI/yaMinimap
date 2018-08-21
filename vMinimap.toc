@@ -1,10 +1,10 @@
 ## Interface: 73000
 ## Author: Nonus - https://github.com/Nonus
-## Title: |cffFA2384ya|rMinimap
+## Title: |cffFA2384v|rMinimap
 ## Notes: Minimap Mod by Nonus
 ## X-Category: Minimap
 ## Version: 1.1
-## Dependencies: yaCore, yaMedia
+## Dependencies: vCore, vMedia
 
 cfg.lua
 core.lua
