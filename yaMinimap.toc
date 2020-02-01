@@ -1,0 +1,10 @@
+## Interface: 80000
+## Author: Lofbergio - https://github.com/lofbergio
+## Title: |cffFA2384ya|rMinimap
+## Notes: Minimap Mod by lofbergio
+## X-Category: Minimap
+## Version: 1.1
+## Dependencies: yaCore, yaMedia
+
+cfg.lua
+core.lua
