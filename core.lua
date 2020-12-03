@@ -28,7 +28,7 @@ E:Wait(1, CheckPosition)
 
 function CreateInnerBorder(f)
 	if f.iborder then return end
-	f.iborder = CreateFrame("Frame", nil, f)
+	f.iborder = CreateFrame("Frame", nil, f, "BackdropTemplate")
 	f.iborder:SetPoint("TOPLEFT", 1, -1)
 	f.iborder:SetPoint("BOTTOMRIGHT", -1, 1)
 	f.iborder:SetFrameLevel(f:GetFrameLevel())
@@ -41,6 +41,7 @@ function CreateInnerBorder(f)
 end
 
 function frame1px(f)
+	Mixin(f, BackdropTemplateMixin)
 	f:SetBackdrop({
 		bgFile =  [=[Interface\ChatFrame\ChatFrameBackground]=],
         edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = 1, 
@@ -162,7 +163,7 @@ Minimap:SetMaskTexture('Interface\\ChatFrame\\ChatFrameBackground')
 function GetMinimapShape() return 'SQUARE' end
 
 if cfg.showInfo then
-	local FLMframe = CreateFrame("Button", "FLMframe", UIParent)
+	local FLMframe = CreateFrame("Button", "FLMframe", UIParent, "BackdropTemplate")
 	FLMframe:SetPoint("TOP", Minimap, "BOTTOM", 0, 172)
 	FLMframe:SetSize(Minimap:GetWidth(), cfg.fontSize+6)
 	FLMframe:SetFrameLevel(4)
